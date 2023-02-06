@@ -1,0 +1,46 @@
+.btn {
+    &,
+    &:link,
+    &:visited {
+        font-size: var(--font-size-default);
+        line-height: auto;
+        text-transform: uppercase;
+        text-decoration: none;
+        position: relative;
+        transition: all .2s;
+        border-radius: 5px;
+
+        // Changes for button elements
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 .1rem 2rem rgba(#000, .2);
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgay(#000, .2);
+    }
+
+    &--default {
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        padding: 1rem 4rem;
+    }
+    
+    &--subscribe {
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        padding: 1rem 4rem;
+        width: 100%;
+    }
+    
+    &--sm {
+        padding: .5rem 2rem;
+    }
+}

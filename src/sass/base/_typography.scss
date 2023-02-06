@@ -1,0 +1,41 @@
+@use '../abstracts' as *;
+
+body {
+    font-family: $font-family-sans-serif;
+    font-weight: var(--font-weight-regular);
+    line-height: 1.7;
+    color: var(--color-font-primary);
+}
+
+.heading-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.heading-regular {
+    font-weight: var(--font-weight-regular);
+}
+
+.heading-light {
+    font-weight: var(--font-weight-light);
+}
+
+.heading-article {
+    font-weight: var(--font-weight-regular);
+    line-height: 2.5;
+}
+
+.heading-h1 {
+    font-size: var(--font-size-h1);
+}
+
+.heading-h2 {
+    font-size: var(--font-size-h2);
+}
+
+.heading-h3 {
+    font-size: var(--font-size-h3);
+}
+
+.lead {
+    font-size: var(--font-size-lead);
+}

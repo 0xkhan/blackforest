@@ -1,0 +1,25 @@
+.breadcrumb {
+    color: var(--color-secondary);
+
+    &__list {
+        list-style: none;
+    }
+
+    &__item {
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: .5rem;
+        }
+
+        &:not(:first-child)::before {
+            content: "/";
+            color: var(--color-font-secondary);
+            padding-right: .5rem;
+        }
+
+        &--active {
+            color: var(--color-font-secondary);
+        }
+    }
+}

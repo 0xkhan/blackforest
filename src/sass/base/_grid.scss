@@ -1,0 +1,84 @@
+@use '../abstracts' as *;
+
+// .container {
+//     font-size: 1.6rem;
+//     padding: 0 5rem;
+//     display: grid;
+//     column-gap: 3rem;
+//     grid-template-columns: [full-start] 1fr [center-start] repeat(12, [col-start] minmax(min-content, 12rem) [col-end]) [center-end] 1fr [full-end];
+//     
+//     @include respond(phone) {
+//         padding: 0 3rem;
+//         column-gap: 0;
+//     }
+// }
+
+$grid__bp-xs: 0;
+$grid__bp-sm: 576px;
+$grid__bp-md: 768px;
+$grid__bp-lg: 992px;
+$grid__bp-xl: 1200px;
+$grid__bp-xxl: 1400px;
+
+$big-page-width: $grid__bp-xl;
+$max-page-width: $grid__bp-xxl;
+$grid-columns: 12;
+$grid-gutter: 1.5em;
+
+.container {
+    max-width: $big-page-width;
+    margin: 0 auto;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat($grid-columns, 1fr);
+    grid-gap: $grid-gutter;
+}
+
+// Breakpoints
+$map-grid-props: (
+    '': 0,
+    '-xxl': $grid__bp-xxl,
+    '-xl': $grid__bp-xl,
+    '-lg': $grid__bp-lg,
+    '-md': $grid__bp-md,
+    '-sm': $grid__bp-sm
+);
+
+// Max-widths for breakpoints
+$container-max-widths: (
+    '-xxl': 1320px,
+    '-xl': 1140px,
+    '-lg': 960px,
+    '-md': 720px,
+    '-sm': 540px
+);
+
+// Build the Grid
+// Mixin for creating dynamic media queries
+@mixin create-media-queries($breakpoint) {
+    @if ($breakpoint == 0) {
+        @content;
+    } @else {
+        @media only screen and (max-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+
+@mixin create-col-classes($modifier, $grid-columns, $breakpoint) {
+    @include create-media-queries($breakpoint) {
+        
+        .container#{$modifier}, .container {
+            // Gets the right max-width for the the right breakpoint
+            max-width: map-get($container-max-widths, $modifier);
+        }
+        
+    }
+}
+
+// Loops through breakpoints and creates all necessary classes for the right breakpoint
+@each $modifier, $breakpoint in $map-grid-props {
+    @include create-col-classes($modifier, $grid-columns, $breakpoint);
+}

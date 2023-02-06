@@ -1,0 +1,180 @@
+@use '../abstracts' as *;
+
+.nav {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+
+    .container {
+        height: 100%;
+    }
+
+    &__container {
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__logo-container {
+        flex-basis: calc(100% / 2);
+        
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &__logo-box {
+        width: 12rem;
+    }
+
+    &__logo {
+        width: 100%;
+    }
+
+    &__nav {
+        flex-basis: calc(100% / 2);
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        @include respond(tab-land) {
+            flex-basis: 100%;
+            order: 2;
+            justify-content: flex-start;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        text-decoration: none;
+        transition: max-height .5s, transform .1s, opacity 1.5s;
+
+        // For hover effect
+        height: 100%;
+        display: flex;
+        
+        @include respond(tab-land) {
+            max-height: 0;
+            transform: translateY(-1000px);
+            opacity: 0;
+            display: block;    
+        }
+    }
+    
+    &__show-list {
+        max-height: 1000px;
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    &__item {
+        height: 8rem;
+
+        &:not(:last-child) {
+            margin-right: .5rem;
+        }
+        
+        &:hover {
+            background-color: darken(#18354c, 5%);
+        }
+
+        &--active {
+            background-color: darken(#18354c, 5%);
+        }
+        
+        @include respond(tab-land) {
+            height: 5rem;
+            display: block;
+        }
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            color: inherit;
+            line-height: normal;
+            text-decoration: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            font-size: 1.8rem;
+        
+            @include respond(tab-land) {
+                &:last-child {
+                    margin-bottom: 1.5rem;
+                }
+            }
+        }
+
+        &:active,
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__menu-btn-container {
+        flex-basis: 50%;
+        justify-content: end;
+        align-items: center;
+        display: none;
+
+        @include respond(tab-land) {
+            display: flex;
+        }
+    }
+
+    &__menu-btn {
+        cursor: pointer;
+        
+        @include respond(tab-land) {
+            padding: 2.55rem 0;
+        }
+    }
+
+    // Menu Icon
+    &__icon {
+        position: relative;
+        top: 1.29rem;
+
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+            background-color: var(--color-white);
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::before { top: -8px; }
+        &::after { top: 8px; }
+    }
+
+    // Menu Icon Animation
+    &__menu-btn:hover &__icon::before {
+        top: -1rem;
+    }
+    &__menu-btn:hover &__icon::after {
+        top: 1rem;
+    }
+
+    &__icon.rotate {
+        background-color: transparent;
+    }
+    &__icon.rotate::before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+    &__icon.rotate::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
+}

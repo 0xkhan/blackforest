@@ -1,0 +1,17 @@
+@use '../abstracts' as *;
+
+.contact-header {
+    &__image {
+        width: 100%;
+    }
+}
+
+.contact-form {
+    &__container {
+        grid-column: span 8;
+
+        @include respond(tab-land) {
+            grid-column: span 12;
+        }
+    }
+}

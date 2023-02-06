@@ -1,0 +1,29 @@
+@use '../abstracts' as *;
+
+.header {
+    &__left-half {
+        grid-column: span 8;
+        
+        & > .card {
+            height: 100%;
+        }
+
+        @include respond(tab-land) {
+            grid-column: span 12;
+        }
+    }
+
+    &__right-half {
+        grid-column: span 4;
+        
+        @include respond(tab-land) {
+            grid-column: span 12;
+        }
+    }
+
+    &__sub-posts {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2.5rem;
+    }
+}

@@ -1,0 +1,48 @@
+@use '../abstracts' as *;
+
+.criteria {
+    grid-column: span 6;
+
+    padding: 2rem;
+    box-shadow: .5rem .5rem 2rem rgba(#000, .1);
+    
+    @include respond(phone) {
+        grid-column: span 12;
+    }
+
+    &__item {
+        padding-left: 3.5rem;
+        position: relative;
+        list-style: none;
+        transition: all .2s;
+
+        &:not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
+
+        &::before {
+            position: absolute;
+            top: 2px;
+            left: 0;
+            
+            @include respond(phone) {
+                top: 0;
+            }
+        }
+
+        &--con {
+            &::before {
+                display: list-item;
+                content: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-rounded-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="rgba(255, 82, 82)" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10l4 4m0 -4l-4 4"></path><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path></svg>');
+            }
+        }
+
+        &--pro {
+            &::before {
+                display: list-item;
+                content: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-rounded-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="rgba(76, 175, 80)" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 12l2 2l4 -4"></path><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path></svg>');
+            }
+        }
+        
+    }
+}

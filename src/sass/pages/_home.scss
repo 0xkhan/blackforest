@@ -1,0 +1,26 @@
+@use '../abstracts' as *;
+
+.container {
+    font-size: 1.6rem;
+    padding: 0 2rem;
+}
+
+.header {
+    padding: 5rem 0;
+}
+
+.section-posts,
+.section-contact {
+    padding: 0 0 5rem 0;
+    
+    @include respond(phone) {
+        padding: 0 0 3rem 0;
+    }
+}
+
+.social-icon {
+    width: 25px;
+    height: 25px;
+    fill: currentColor;
+    margin-right: .5rem;
+}
